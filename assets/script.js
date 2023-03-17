@@ -22,7 +22,7 @@ window.onload = function () {
 	let pathImage = "./assets/images/slideshow/";
 	let indexSlide = 0; //nombre des élements contenu dans le tableau slides
 	let imagesElement = document.getElementById("images");
-
+	let textElement = document.getElementById("textCaroussel");
 
 	//Direction vers la droite du caroussel
 	let arrowRight = document.querySelector('#arrowRight');
@@ -58,6 +58,6 @@ window.onload = function () {
 		}
 
 		imagesElement.src = pathImage + slides[indexSlide].image; //Affichage des images du caroussel
-		
+		textElement.innerHTML = slides[indexSlide].tagLine; //Affichage texte du caroussel	
 	}
 }
