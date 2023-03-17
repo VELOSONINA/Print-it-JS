@@ -23,6 +23,13 @@ window.onload = function () {
 	let indexSlide = 0; //nombre des élements contenu dans le tableau slides
 	let imagesElement = document.getElementById("images");
 	let textElement = document.getElementById("textCaroussel");
+	let buttonsContainer = document.querySelectorAll(".dots");
+
+
+	//Affiche les quatres boutons
+	let numberSlide = slides.length;
+	initDots(numberSlide, buttonsContainer[0]);
+
 
 	//Direction vers la droite du caroussel
 	let arrowRight = document.querySelector('#arrowRight');
@@ -60,4 +67,14 @@ window.onload = function () {
 		imagesElement.src = pathImage + slides[indexSlide].image; //Affichage des images du caroussel
 		textElement.innerHTML = slides[indexSlide].tagLine; //Affichage texte du caroussel	
 	}
+
+	//Fonction pour afficher les boutons dot
+	function initDots(nombreSlide,buttonsContainer) {	
+		for (let indexSlide = 0; indexSlide < nombreSlide; indexSlide++) {
+			let button = document.createElement('span');
+			button.classList.add('dot');
+			buttonsContainer.appendChild(button);
+		}
+	}
+	
 }
