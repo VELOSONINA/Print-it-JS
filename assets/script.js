@@ -73,6 +73,7 @@ window.onload = function () {
 			indexSlide = 0;
 		}
 
+		//Affichage de dot_selected
 		buttonToBeSelect[indexSlide].classList.add('dot_selected');
 		//Affichage des images du caroussel
 		imagesElement.src = pathImage + slides[indexSlide].image; 
