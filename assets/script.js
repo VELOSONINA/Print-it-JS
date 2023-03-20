@@ -18,18 +18,21 @@ window.onload = function () {
 		}
 	]
 
+
 	//Déclaration des variables
 	let pathImage = "./assets/images/slideshow/";
 	let indexSlide = 0; //nombre des élements contenu dans le tableau slides
 	let imagesElement = document.getElementById("images");
 	let textElement = document.getElementById("textCaroussel");
 	let buttonsContainer = document.querySelectorAll(".dots");
-
+	
 
 	//Affiche les quatres boutons
 	let numberSlide = slides.length;
+	//Appel des fonctions
+	initImages(imagesElement, textElement, slides);
 	initDots(numberSlide, buttonsContainer[0]);
-
+	
 
 	//Direction vers la droite du caroussel
 	let arrowRight = document.querySelector('#arrowRight');
@@ -54,8 +57,14 @@ window.onload = function () {
 	// Fonction des directions du caroussel
 	function ChangeSlideByIndex(direction) {
 		indexSlide = indexSlide + direction;
-		
+		let buttonToBeSelect = document.getElementsByClassName('dot');
 		let slideLength = slides.length;
+
+		
+		for (let indexDot = 0; indexDot < buttonToBeSelect.length; indexDot++) {
+			//efface les dot_selected dans chaque élément
+			buttonToBeSelect[indexDot].classList.remove('dot_selected'); 	
+		}
 
 		if (indexSlide < 0) {
 			indexSlide = slideLength - 1;
@@ -64,17 +73,38 @@ window.onload = function () {
 			indexSlide = 0;
 		}
 
-		imagesElement.src = pathImage + slides[indexSlide].image; //Affichage des images du caroussel
-		textElement.innerHTML = slides[indexSlide].tagLine; //Affichage texte du caroussel	
+		buttonToBeSelect[indexSlide].classList.add('dot_selected');
+		//Affichage des images du caroussel
+		imagesElement.src = pathImage + slides[indexSlide].image; 
+		//Affichage texte du caroussel
+		textElement.innerHTML = slides[indexSlide].tagLine; 	
 	}
 
+
+	//Fonction pour afficher le premier tagLine 
+	function initImages(imagesContainer,tagContainer,slides){
+		imagesContainer.src = pathImage + slides[0].image; 
+		//Affichage texte du caroussel
+		tagContainer.innerHTML = slides[0].tagLine; 
+
+	}
+
+
 	//Fonction pour afficher les boutons dot
-	function initDots(nombreSlide,buttonsContainer) {	
-		for (let indexSlide = 0; indexSlide < nombreSlide; indexSlide++) {
-			let button = document.createElement('span');
-			button.classList.add('dot');
-			buttonsContainer.appendChild(button);
+	function initDots(numberSlide,buttonsContainer) {	
+		for (let indexSlide = 0; indexSlide < numberSlide; indexSlide++) {
+			let buttonDot = document.createElement('span');
+
+			//Affiche dot_selected au chargement
+			if (indexSlide === 0) {
+				buttonDot.classList.add('dot_selected');
+			}
+			
+			//ajout des Boutons 
+			buttonDot.classList.add('dot');
+			buttonsContainer.appendChild(buttonDot);
+			
 		}
 	}
-	
 }
+		
