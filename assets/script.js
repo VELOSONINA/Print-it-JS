@@ -87,7 +87,6 @@ window.onload = function () {
 		imagesContainer.src = pathImage + slides[0].image; 
 		//Affichage texte du caroussel
 		tagContainer.innerHTML = slides[0].tagLine; 
-
 	}
 
 
@@ -103,8 +102,7 @@ window.onload = function () {
 			
 			//ajout des Boutons 
 			buttonDot.classList.add('dot');
-			buttonsContainer.appendChild(buttonDot);
-			
+			buttonsContainer.appendChild(buttonDot);	
 		}
 	}
 }
