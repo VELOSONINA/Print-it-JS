@@ -36,35 +36,25 @@ window.onload = function () {
 
 	//Direction vers la droite du caroussel
 	let arrowRight = document.querySelector('#arrowRight');
-		
-	if (arrowRight) {
 		arrowRight.addEventListener("click", function () {
 			console.log("click right")
-			ChangeSlideByIndex(1);
+			changeSlideByIndex(1);
 		});
-	}
 
 	//Direction vers la gauche du caroussel
 	let arrowLeft = document.querySelector('#arrowLeft');
-
-	if (arrowLeft) {
 		arrowLeft.addEventListener("click", function () {
 			console.log("click left")
-			ChangeSlideByIndex(-1);
+			changeSlideByIndex(-1);
 		});
-	}
 
 	// Fonction des directions du caroussel
-	function ChangeSlideByIndex(direction) {
-		indexSlide = indexSlide + direction;
-		let buttonToBeSelect = document.getElementsByClassName('dot');
-		let slideLength = slides.length;
-
+	function changeSlideByIndex(direction) {
+		let dots = document.getElementsByClassName('dot');
+		dots[indexSlide].classList.remove('dot_selected'); 
 		
-		for (let indexDot = 0; indexDot < buttonToBeSelect.length; indexDot++) {
-			//efface les dot_selected dans chaque élément
-			buttonToBeSelect[indexDot].classList.remove('dot_selected'); 	
-		}
+		indexSlide = indexSlide + direction;
+		let slideLength = slides.length;
 
 		if (indexSlide < 0) {
 			indexSlide = slideLength - 1;
@@ -74,7 +64,7 @@ window.onload = function () {
 		}
 
 		//Affichage de dot_selected
-		buttonToBeSelect[indexSlide].classList.add('dot_selected');
+		dots[indexSlide].classList.add('dot_selected');
 		//Affichage des images du caroussel
 		imagesElement.src = pathImage + slides[indexSlide].image; 
 		//Affichage texte du caroussel
@@ -88,7 +78,7 @@ window.onload = function () {
 		//Affichage texte du caroussel
 		tagContainer.innerHTML = slides[0].tagLine; 
 	}
-
+}
 
 	//Fonction pour afficher les boutons dot
 	function initDots(numberSlide,buttonsContainer) {	
@@ -105,5 +95,4 @@ window.onload = function () {
 			buttonsContainer.appendChild(buttonDot);	
 		}
 	}
-}
 		
