@@ -53,6 +53,7 @@ window.onload = function () {
 		let dots = document.getElementsByClassName('dot');
 		dots[indexSlide].classList.remove('dot_selected'); 
 		
+		//récupère l'indexSlide
 		indexSlide = indexSlide + direction;
 		let slideLength = slides.length;
 
@@ -72,7 +73,7 @@ window.onload = function () {
 	}
 
 
-	//Fonction pour afficher le premier tagLine 
+	//Fonction pour afficher le premier tagLine et images 
 	function initImages(imagesContainer,tagContainer,slides){
 		imagesContainer.src = pathImage + slides[0].image; 
 		//Affichage texte du caroussel
