@@ -64,12 +64,12 @@ window.onload = function () {
 			indexSlide = 0;
 		}
 
-		//Affichage de dot_selected
-		dots[indexSlide].classList.add('dot_selected');
 		//Affichage des images du caroussel
 		imagesElement.src = pathImage + slides[indexSlide].image; 
 		//Affichage texte du caroussel
 		textElement.innerHTML = slides[indexSlide].tagLine; 	
+		//Affichage de dot_selected
+		dots[indexSlide].classList.add('dot_selected');
 	}
 
 
